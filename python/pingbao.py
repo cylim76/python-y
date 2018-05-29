@@ -3,8 +3,8 @@ import tkinter
 
 class RandomBall():
     def __init__(self,canvas,scrnwidth,scrnheight):
-        self.xpos = random.randint(10,int(scrnwidth)-20)
-        self.ypos = random.randint(10,int(scrnwidth)-20)
+        self.xpos = random.randint(-200,int(scrnwidth)+200)
+        self.ypos = random.randint(-200,int(scrnwidth)+200)
         self.xvelocity = random.randint(4,20)
         self.yvelocity = random.randint(4,20)
         self.scrnwidth,self.scrnheight = scrnwidth,scrnheight
@@ -29,12 +29,16 @@ class RandomBall():
 
         if self.xpos +self.radius >= self.scrnwidth:
             self.xvelocity = -self.xvelocity
+
         if self.xpos -self.radius <=0:
             self.xvelocity = -self.xvelocity
+
         if self.ypos +self.radius >=self.scrnheight:
             self.yvelocity = -self.yvelocity
+
         if self.ypos -self.radius <=0:
             self.yvelocity =-self.yvelocity
+
 
         self.canvas.move(self.item,self.xvelocity,self.yvelocity)
 
@@ -42,7 +46,7 @@ class ScreenSaver():
     balls = list()
 
     def __init__(self):
-        self.num_balls = random.randint(6, 20)
+        self.num_balls = random.randint(10, 20)
         self.root = tkinter.Tk()
         self.root.overrideredirect(1)
         self.root.bind('<Motion>', self.myquit)
